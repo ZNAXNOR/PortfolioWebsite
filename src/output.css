@@ -446,8 +446,20 @@ video {
   display: none;
 }
 
-html {
-  font-family: "Product", "Mona", system-ui, sans-serif;
+@font-face {
+  font-family: ProductSans;
+
+  font-weight: 400;
+
+  src: url(../font/ProductSans/ProductSans-Regular.ttf) format("ttf");
+}
+
+@font-face {
+  font-family: MonaSans;
+
+  font-weight: 400;
+
+  src: url(../font/MonaSans/TTF/MonaSans-Regular.ttf) format("ttf");
 }
 
 *, ::before, ::after {
@@ -592,6 +604,10 @@ html {
   }
 }
 
+.visible {
+  visibility: visible;
+}
+
 .absolute {
   position: absolute;
 }
@@ -645,8 +661,16 @@ html {
   margin-top: 2rem;
 }
 
+.block {
+  display: block;
+}
+
 .flex {
   display: flex;
+}
+
+.hidden {
+  display: none;
 }
 
 .h-10 {
@@ -657,8 +681,16 @@ html {
   height: 1.25rem;
 }
 
+.h-6 {
+  height: 1.5rem;
+}
+
 .h-full {
   height: 100%;
+}
+
+.w-24 {
+  width: 6rem;
 }
 
 .w-48 {
@@ -667,6 +699,10 @@ html {
 
 .w-5 {
   width: 1.25rem;
+}
+
+.w-7 {
+  width: 1.75rem;
 }
 
 .w-full {
@@ -679,6 +715,10 @@ html {
 
 .flex-none {
   flex: none;
+}
+
+.transform {
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .list-inside {
@@ -734,9 +774,29 @@ html {
   border-color: rgb(37 99 235 / var(--tw-border-opacity));
 }
 
+.border-github-black {
+  --tw-border-opacity: 1;
+  border-color: rgb(36 41 47 / var(--tw-border-opacity));
+}
+
+.border-linkedin-blue {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 119 181 / var(--tw-border-opacity));
+}
+
+.border-pure-black {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
+}
+
 .border-slate-200 {
   --tw-border-opacity: 1;
   border-color: rgb(226 232 240 / var(--tw-border-opacity));
+}
+
+.border-default-color {
+  --tw-border-opacity: 1;
+  border-color: rgb(57 68 188 / var(--tw-border-opacity));
 }
 
 .bg-black {
@@ -749,9 +809,34 @@ html {
   background-color: rgb(31 41 55 / var(--tw-bg-opacity));
 }
 
+.bg-pure-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.fill-github-black {
+  fill: #24292F;
+}
+
+.fill-linkedin-blue {
+  fill: #0077B5;
+}
+
+.fill-pure-black {
+  fill: #000000;
+}
+
+.fill-pure-white {
+  fill: #FFFFFF;
+}
+
+.fill-default-color {
+  fill: #3944BC;
 }
 
 .object-cover {
@@ -880,6 +965,11 @@ html {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.text-default-color {
+  --tw-text-opacity: 1;
+  color: rgb(57 68 188 / var(--tw-text-opacity));
+}
+
 .shadow {
   --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
@@ -909,7 +999,35 @@ html {
   background-color: rgb(37 99 235 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-github-black:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(36 41 47 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-linkedin-blue:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 119 181 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-pure-black:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-default-color:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(57 68 188 / var(--tw-bg-opacity));
+}
+
 .hover\:text-white:hover {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:block {
+  display: block;
+}
+
+.group:hover .group-hover\:hidden {
+  display: none;
 }

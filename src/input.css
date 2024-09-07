@@ -3,7 +3,14 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    font-family: "Product", "Mona", system-ui, sans-serif;
+  @font-face {
+    font-family: ProductSans;
+    font-weight: 400;
+    src: url(../font/ProductSans/ProductSans-Regular.ttf) format("ttf");
+  }
+  @font-face {
+    font-family: MonaSans;
+    font-weight: 400;
+    src: url(../font/MonaSans/TTF/MonaSans-Regular.ttf) format("ttf");
   }
 }
