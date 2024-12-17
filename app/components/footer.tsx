@@ -1,19 +1,13 @@
 "use client";
 
 import React from "react";
-import {
-  FaXTwitter,
-  FaGithub,
-  FaInstagram,
-  FaRss,
-  FaLinkedinIn,
-} from "react-icons/fa6";
+import {FaXTwitter, FaGithub, FaInstagram, FaRss, FaLinkedinIn,} from "react-icons/fa6";
 import { TbMailFilled } from "react-icons/tb";
 import { metaData, socialLinks } from "app/config";
 
 const YEAR = new Date().getFullYear();
 
-function SocialLink({ href, icon: Icon }) {
+export function SocialLink({ href, icon: Icon }) {
   return (
     <a href={href} target="_blank" rel="noopener noreferrer">
       <Icon />
