@@ -2,11 +2,13 @@ export const metaData = {
   baseUrl: "https://omkar.odtechlab.com/",
   title: "Omkar Portfolio",
   name: "Omkar Dalvi",
-  profileImage: "../public/profile.jpg",
+  profileImage: "/profile.jpg",
+  ogImage: "/profile.jpg",
+  description:"Hello! This is Omkar and welcome to my personal portfolio website!",
   about:"Hello! This is Omkar and welcome to my personal portfolio website!",
   preferedCareerLocation:"India, Remote",
   openToRelocation:"Yes",
-  areasOfJobIntrest:"Cloud, Tech Sales",
+  areasOfJobIntrest:"Cloud, Data Centre Operations, Solutions Architect, Cloud Sales",
   skills: " "
 };
 
