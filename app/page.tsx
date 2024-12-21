@@ -20,7 +20,7 @@ export default function Page() {
                     ring-2 ring-orange-500 hover:ring-0 focus:ring-gray-700 focus:ring-offset-4
                     text-center text-sm font-semibold text-orange-500 hover:text-white
                     bg-gradient-to-r hover:from-red-600 hover:to-orange-600">
-                      Resume
+                    Resume
             </button>
           </a>
         </div>
