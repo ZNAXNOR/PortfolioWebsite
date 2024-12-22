@@ -2,7 +2,6 @@
 
 import React from "react";
 import {FaXTwitter, FaGithub, FaInstagram, FaRss, FaLinkedinIn,} from "react-icons/fa6";
-import { TbMailFilled } from "react-icons/tb";
 import { metaData, socialLinks } from "../config";
 
 const YEAR = new Date().getFullYear();
@@ -36,7 +35,7 @@ function SocialLinks() {
 
 export default function Footer() {
   return (
-    <small className="block lg:mt-24 mt-16 text-[#1C1C1C] dark:text-[#D4D4D4]">
+    <small className="block mt-10 mx-10 text-[#1C1C1C] dark:text-[#D4D4D4]">
       <time>© {YEAR}</time>{" "}
       <a className="no-underline" href={socialLinks.linkedin} target="_blank"
         rel="noopener noreferrer">

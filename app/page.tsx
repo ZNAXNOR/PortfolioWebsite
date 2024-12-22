@@ -20,7 +20,7 @@ export default function Page() {
                     ring-2 ring-orange-500 hover:ring-0 focus:ring-gray-700 focus:ring-offset-4
                     text-center text-sm font-semibold text-orange-500 hover:text-white
                     bg-gradient-to-r hover:from-red-600 hover:to-orange-600">
-                    Resume
+              View Resume
             </button>
           </a>
         </div>
@@ -30,7 +30,8 @@ export default function Page() {
           {/* Text Content */}
           <div className="lg:mt-5 text-center mt-5 mx-auto lg:text-left">
             <h1 className="mb-8 text-5xl font-medium ms">Welcome to my 
-              <strong className="bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-orange-500"> Portfolio!</strong>
+              <strong className="bg-clip-text text-transparent bg-gradient-to-r
+                    from-red-500 to-orange-500"> Portfolio!</strong>
             </h1>
             <div className="prose prose-neutral dark:prose-invert text-balance">
               <p>

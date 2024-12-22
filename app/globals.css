@@ -60,7 +60,7 @@ html {
 }
 
 .prose a:hover {
-  @apply dark:decoration-neutral-400 decoration-neutral-600;
+  @apply dark:decoration-red-400 decoration-red-600;
 }
 
 .prose .anchor:after {

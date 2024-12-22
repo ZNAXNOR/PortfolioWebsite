@@ -1,35 +1,103 @@
+'use client';
+
 import Link from "next/link";
 import { ThemeSwitch } from "./theme-switch";
-import { metaData } from "../config";
+import { socialLinks  } from "../config";
+import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, 
+        MenuItem, MenuItems } from '@headlessui/react'
+import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Router } from "next/router";
+import { usePathname } from 'next/navigation';
+import { useState } from "react";
 
-const navItems = {
-  "/": { name: "Home"},
-  "/contact": { name: "Contact Me"},
-  "/blog": { name: "Blog" },
-  "/projects": { name: "Projects" },
-  "/photos": { name: "Photos" }
-};
+const navigation = [
+  { name: 'Home', href: '/', current: true },
+  { name: 'Contact Me', href: '/contact', current: false },
+  { name: 'Blog', href: '/blog', current: false },
+  { name: 'Projects', href: '/projects', current: false },
+  { name: 'Photos', href: '/photos', current: false },
+]
+
+function classNames(...classes: (string | undefined | null | false)[]) {
+  return classes.filter(Boolean).join(' ')
+}
 
 export function Navbar() {
+  const pathname = usePathname();
   return (
-    <nav className="lg:mb-16 mb-12">
-      <div className="flex flex-col md:flex-row md:items-center justify-between">
-        <div className="flex items-center">
-          <Link href="/" className="text-3xl font-semibold tracking-tight">
-            {metaData.title}
-          </Link>
+    <Disclosure as="nav">
+      <div className="pb-20 px-10">
+        <div className="mx-auto space-x-4 my-auto max-w-7xl px-2">
+          <div className="relative flex h-16 items-center justify-between">
+            <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
+              {/* Mobile menu button*/}
+              <DisclosureButton className="group relative inline-flex items-center justify-center 
+                                rounded-md p-2 text-gray-700 hover:bg-gray-100 dark:text-gray-400 
+                                dark:hover:bg-gray-700 hover:text-black dark:hover:text-white 
+                                focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                <span className="absolute -inset-0.5" />
+                <span className="sr-only">Open main menu</span>
+                <Bars3Icon aria-hidden="true" className="block size-6 group-data-[open]:hidden" />
+                <XMarkIcon aria-hidden="true" className="hidden size-6 group-data-[open]:block" />
+              </DisclosureButton>
+            </div>
+
+            <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
+              {/* Title */}
+              <div className="flex shrink-0 items-center">
+                <a href="/">
+                  <strong className="text-lg bg-clip-text text-transparent bg-gradient-to-r 
+                                    from-red-500 to-orange-500"> 
+                  Omkar Portfolio </strong>
+                </a>
+              </div>
+              {/* Navigation Menu */}
+              <div className="hidden md:ml-10 md:block">
+                <div className="flex space-x-4">
+                  {navigation.map((item) => (
+                    <a key={item.name} href={item.href} 
+                      className={classNames(pathname === item.href ? 'bg-orange-600 text-white' : 
+                              'hover:underline underline-offset-4 decoration-red-600 hover:text-gray-600 dark:hover:text-gray-300',
+                              'rounded-md px-3 py-2 text-sm font-medium shrink-0')}>
+                      {item.name}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="absolute inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto 
+                            space-x-4 md:ml-6 md:pr-0">
+              <a href="/resume">
+                <span className="md:ml-3">
+                  <button type="button" className="inline-flex items-center rounded-md 
+                          bg-gradient-to-r from-red-600 to-orange-600 px-3 py-2 text-sm 
+                          font-semibold text-white shadow-sm hover:from-red-500 
+                          hover:via-orange-500 hover:to-yellow-500 focus-visible:outline 
+                          focus-visible:outline-2 focus-visible:outline-offset-2 
+                          focus-visible:outline-white">
+                    View Resume
+                  </button>                
+                </span>
+              </a>
+              <ThemeSwitch />
+            </div>
+          </div>
         </div>
-        <div className="flex flex-row gap-4 mt-6 md:mt-0 md:ml-auto items-center">
-          {Object.entries(navItems).map(([path, { name }]) => (
-            <Link
-              key={path} href={path}
-              className="transition-all hover:text-orange-500 flex align-middle relative me-1">
-              {name}
-            </Link>
-          ))}
-          <ThemeSwitch />
-        </div>
+
+        <DisclosurePanel className="md:hidden">
+          <div className="space-y-1 px-2 pb-3 pt-2">
+            {navigation.map((item) => (
+              <DisclosureButton key={item.name} as="a" href={item.href}
+                className={classNames( pathname === item.href ? 'bg-orange-600 text-white' : 
+                'hover:underline underline-offset-4 decoration-red-600 text-gray-600 dark:text-gray-400', 
+                'block rounded-md px-3 py-2 text-base font-medium',)} >
+                {item.name}
+              </DisclosureButton>
+            ))}
+          </div>
+        </DisclosurePanel>
       </div>
-    </nav>
-  );
+    </Disclosure>
+  )
 }

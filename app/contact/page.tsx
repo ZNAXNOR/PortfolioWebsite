@@ -144,12 +144,10 @@ export default function Contact() {
               </div>
 
               {/* Button */}
-                <button type="button" className="bg-orange-500 ..." disabled>
-                    <svg className="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24">
-                        {/* ... */}
-                    </svg>
-                    Processing...
-                </button>
+              <button type="submit" className="mt-10 w-full rounded-md bg-orange-600 px-3.5 py-2.5 
+                      text-center text-sm font-semibold text-white hover:bg-orange-500">
+                Let's talk
+              </button>
             </form>
           )}
         </div>
