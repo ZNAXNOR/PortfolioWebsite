@@ -10,7 +10,21 @@ import {
 } from "react-icons/fa6";
 import { metaData, socialLinks } from "../config";
 
-const YEAR = new Date().getFullYear();
+const aboutMe = [
+  { name: "Resume", href: "/resume", current: true },
+  { name: "Projects", href: "/projects", current: false },
+  { name: "Certificates", href: "/certificates", current: false },
+];
+
+const additional = [
+  { name: "Blog", href: "/blog", current: false },
+  { name: "Photos", href: "/photos", current: false },
+];
+
+const legal = [
+  { name: "Privacy Policy", href: "/privacy", current: false },
+  { name: "Cookie Policy", href: "/cookies", current: false },
+];
 
 type SocialLinkProps = {
   href: string;
@@ -32,9 +46,6 @@ function SocialLinks() {
       <SocialLink href={socialLinks.github} icon={FaGithub} />
       <SocialLink href={socialLinks.instagram} icon={FaInstagram} />
       <SocialLink href={socialLinks.linkedin} icon={FaLinkedinIn} />
-      <a href="/rss.xml" target="_self">
-        <FaRss />
-      </a>
     </div>
   );
 }
@@ -47,51 +58,49 @@ export default function Footer() {
           <nav>
             <h6 className="font-semibold text-lg mb-4">About Me</h6>
             <ul className="space-y-2">
-              <li>
-                <a href="/resume" className="hover:underline">
-                  Resume
-                </a>
-              </li>
-              <li>
-                <a href="/projects" className="hover:underline">
-                  Projects
-                </a>
-              </li>
-              <li>
-                <a href="/certificates" className="hover:underline">
-                  Certificates
-                </a>
-              </li>
+              {aboutMe.map((link) => (
+                <li key={link.name}>
+                  <a
+                    href={link.href}
+                    className="hover:underline underline-offset-4 decoration-red-600
+                              hover:text-gray-600 dark:hover:text-gray-300"
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))}
             </ul>
           </nav>
           <nav>
             <h6 className="font-semibold text-lg mb-4">Additional</h6>
             <ul className="space-y-2">
-              <li>
-                <a href="/blogs" className="hover:underline">
-                  Blogs
-                </a>
-              </li>
-              <li>
-                <a href="/photos" className="hover:underline">
-                  Photos
-                </a>
-              </li>
+              {additional.map((link) => (
+                <li key={link.name}>
+                  <a
+                    href={link.href}
+                    className="hover:underline underline-offset-4 decoration-red-600
+                              hover:text-gray-600 dark:hover:text-gray-300"
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))}
             </ul>
           </nav>
           <nav>
             <h6 className="font-semibold text-lg mb-4">Legal</h6>
             <ul className="space-y-2">
-              <li>
-                <a href="privacy" className="hover:underline">
-                  Privacy policy
-                </a>
-              </li>
-              <li>
-                <a href="cookies" className="hover:underline">
-                  Cookie policy
-                </a>
-              </li>
+              {legal.map((link) => (
+                <li key={link.name}>
+                  <a
+                    href={link.href}
+                    className="hover:underline underline-offset-4 decoration-red-600
+                              hover:text-gray-600 dark:hover:text-gray-300"
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))}
             </ul>
           </nav>
         </div>
