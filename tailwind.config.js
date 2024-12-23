@@ -1,9 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: "class",
-  content: ["./app/**/*.{js,ts,jsx,tsx,mdx}",
-            "./public/**/*.svg"
-          ],
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./public/**/*.svg",
+  ],
   theme: {
     extend: {
       fontFamily: {
@@ -19,8 +21,8 @@ module.exports = {
         },
       },
       screens: {
-        'tablet': "850px"
-      }
+        tablet: "850px",
+      },
     },
   },
   plugins: [require("@tailwindcss/typography")],

@@ -32,6 +32,7 @@
     "@vercel/speed-insights": "^1.0.12",
     "autoprefixer": "^10.4.20",
     "css-loader": "^7.1.2",
+    "daisyui": "^4.12.22",
     "eslint": "^9",
     "eslint-config-next": "15.1.0",
     "feed": "^4.2.2",
