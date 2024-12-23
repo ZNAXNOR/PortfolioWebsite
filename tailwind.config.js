@@ -18,6 +18,9 @@ module.exports = {
           },
         },
       },
+      screens: {
+        'tablet': "850px"
+      }
     },
   },
   plugins: [require("@tailwindcss/typography")],
