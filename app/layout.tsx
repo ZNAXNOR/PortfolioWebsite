@@ -45,7 +45,8 @@ export const metadata: Metadata = {
   },
 };
 
-const cx = (...classes: (string | undefined | null | false)[]) => classes.filter(Boolean).join(" ");
+const cx = (...classes: (string | undefined | null | false)[]) =>
+  classes.filter(Boolean).join(" ");
 
 export default function RootLayout({
   children,
@@ -54,20 +55,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={cx(GeistSans.variable, GeistMono.variable)}>
-      <head>
-        <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS Feed"/>
-        <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom Feed"/>
-        <link rel="alternate" type="application/feed+json" href="/feed.json" title="JSON Feed"/>
-      </head>
       <body className="antialiased flex flex-col items-center justify-center mx-auto mt-2 mb-4">
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Navbar />
           <main className="flex-auto mx-auto mt-2 md:mt-6 flex flex-col px-6 sm:px-4 md:px-0 max-w-[1080px] w-full">
-            <Navbar />
-              {children}
-            <Footer />
-            <Analytics />
-            <SpeedInsights />
+            {children}
           </main>
+          <Footer />
+          <Analytics />
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>
