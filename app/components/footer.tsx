@@ -53,7 +53,7 @@ export default function Footer() {
   return (
     <div
       className="size-full mt-20 border-t-4 bg-gray-950 border-gray-100 dark:border-gray-700
-     -mb-5 text-centre md:text-left"
+     -mb-96 text-centre md:text-left"
     >
       <div className="flex-auto mx-auto p-10 max-w-[1080px] w-full">
         <footer>
@@ -126,7 +126,7 @@ export default function Footer() {
                 <br />
                 <div
                   className="font-bold bg-clip-text text-transparent 
-                bg-gradient-to-r from-red-500 to-orange-500 -mt-auto"
+                bg-gradient-to-r from-red-500 to-orange-500 -mt-5"
                 >
                   Featuring my Portfolio and Skills
                 </div>
