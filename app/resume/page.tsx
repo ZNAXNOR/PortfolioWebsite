@@ -229,12 +229,12 @@ export default function Resume() {
                   <p>
                     <strong className="text-xl">Mangal Ki Recipe</strong>
                   </p>
-                  <p>
+                  <div>
                     <a className="text-sm dark:text-gray-400">
                       Lead Developer & Lead Coordinater for Youtuber Mangal Ki
                       Recipe since 2023.
                     </a>
-                  </p>
+                  </div>
                   <ul className="list-disc list-inside">
                     <li className="marker:text-orange-600">
                       <strong>Application Development:</strong> Led development
@@ -264,16 +264,16 @@ export default function Resume() {
               <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                 <dt className="text-sm/6 font-medium ">Job Offers Received</dt>
                 <dd className="mt-1 text-sm/6 sm:col-span-2 text-gray-700 dark:text-gray-200 sm:mt-0">
-                  <p>
+                  <div>
                     <strong className="text-xl">
                       Data Center Security Manager, Amazon
                     </strong>
-                  </p>
-                  <p>
+                  </div>
+                  <div>
                     <a className="text-sm dark:text-gray-400">
                       Data Center Security Manager , DC Security (ID: 2720806).
                     </a>
-                  </p>
+                  </div>
                   <ul className="list-disc list-inside mt-1">
                     <li className="marker:text-orange-600">
                       <a className="inline-flex">
@@ -281,12 +281,14 @@ export default function Resume() {
                         <Image
                           src="../logo/aws_logo.svg"
                           alt="AWS logo"
-                          className="h-[35px]"
+                          className="mt-1.5"
+                          width={35}
+                          height={35}
                         />
                         Amazon.
                       </a>
                     </li>
-                    <li className="marker:text-orange-600 md:-mt-2">
+                    <li className="marker:text-orange-600 -mt-1">
                       <strong>Job Position:</strong>Data Center Security Manager
                       , DC Security
                     </li>

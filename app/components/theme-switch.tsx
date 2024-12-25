@@ -91,13 +91,15 @@ export const ThemeSwitch: React.FC = () => {
         <Image
           src="../logo/dark-moon.svg"
           alt="Moon icon for dark mode"
-          className="h-[20px] w-[20px]"
+          height={20}
+          width={20}
         />
       ) : (
         <Image
           src="../logo/light-sun.svg"
           alt="Sun icon for light mode"
-          className="h-[20px] w-[20px]"
+          height={20}
+          width={20}
         />
       )}
     </button>
