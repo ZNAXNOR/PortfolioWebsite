@@ -1,4 +1,6 @@
 import React from "react";
+import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { metaData, contactInfo, socialLinks } from "../config";
 import { PaperClipIcon } from "@heroicons/react/20/solid";
@@ -78,7 +80,7 @@ export default function Resume() {
                 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
             >
               <MenuItem>
-                <a
+                <Link
                   href="certifications"
                   className="flex px-4 py-2 text-sm text-gray-700
                             data-[focus]:bg-gray-100 data-[focus]:outline-none"
@@ -88,10 +90,10 @@ export default function Resume() {
                     className="mr-1.5 size-5 text-gray-400"
                   />
                   Certifications
-                </a>
+                </Link>
               </MenuItem>
               <MenuItem>
-                <a
+                <Link
                   href="projects"
                   className="flex px-4 py-2 text-sm text-gray-700
                             data-[focus]:bg-gray-100 data-[focus]:outline-none"
@@ -101,12 +103,12 @@ export default function Resume() {
                     className="mr-1.5 size-5 text-gray-400"
                   />
                   Projects
-                </a>
+                </Link>
               </MenuItem>
             </MenuItems>
           </Menu>
 
-          <a href={socialLinks.resume} target="_blank">
+          <Link href={socialLinks.resume} target="_blank">
             <span className="sm:ml-3">
               <button
                 type="button"
@@ -122,7 +124,7 @@ export default function Resume() {
                 />
               </button>
             </span>
-          </a>
+          </Link>
         </div>
       </div>
 
@@ -132,11 +134,11 @@ export default function Resume() {
         <div className="sm:border border-gray-300 dark:border-gray-700 m-7 sm:p-8">
           <div>
             <h3 className="text-3xl font-semibold">Contact information</h3>
-            <a href="/contact" className="underline underline-offset-4">
+            <Link href="/contact" className="underline underline-offset-4">
               <p className="mt-1 max-w-2xl text-sm/6 text-gray-700 dark:text-gray-400">
                 View full contact details here
               </p>
-            </a>
+            </Link>
           </div>
           <div className="mt-6 sm:border-gray-100 bg-gray-100 rounded-md dark:bg-slate-700 sm:px-8">
             <dl className="divide-y divide-gray-100">
@@ -207,11 +209,11 @@ export default function Resume() {
         <div className="sm:border border-gray-300 dark:border-gray-700 m-7 sm:p-8">
           <div>
             <h3 className="text-3xl font-semibold">Skills & Experience</h3>
-            <a href="/projects" className="underline underline-offset-4">
+            <Link href="/projects" className="underline underline-offset-4">
               <p className="mt-1 max-w-2xl text-sm/6 text-gray-700 dark:text-gray-400">
                 View my projects here.
               </p>
-            </a>
+            </Link>
           </div>
           <div className="mt-6 border-gray-100 bg-gray-100 rounded-md dark:bg-slate-700 sm:px-8">
             <dl className="divide-y divide-gray-100">
@@ -276,7 +278,7 @@ export default function Resume() {
                     <li className="marker:text-orange-600">
                       <a className="inline-flex">
                         <strong>Company:</strong>
-                        <img
+                        <Image
                           src="../logo/aws_logo.svg"
                           alt="AWS logo"
                           className="h-[35px]"
@@ -325,11 +327,11 @@ export default function Resume() {
           <div>
             <h3 className="text-3xl font-semibold">Education</h3>
           </div>
-          <a href="/certifications" className="underline underline-offset-4">
+          <Link href="/certifications" className="underline underline-offset-4">
             <p className="mt-1 max-w-2xl text-sm/6 text-gray-700 dark:text-gray-400">
               View certifications here.
             </p>
-          </a>
+          </Link>
           <div className="mt-6 border-gray-100 bg-gray-100 rounded-md dark:bg-slate-700 sm:px-8">
             <dl className="divide-y divide-gray-100">
               <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -378,7 +380,7 @@ export default function Resume() {
                   </div>
                 </div>
                 <div className="ml-4 shrink-0">
-                  <a href={socialLinks.resume} target="_blank">
+                  <Link href={socialLinks.resume} target="_blank">
                     <button
                       className="flex justify-between font-medium rounded-full ring ring-orange-600 py-1 px-4
                             hover:bg-orange-100 dark:hover:bg-orange-200/100 text-orange-600 ms-3"
@@ -389,7 +391,7 @@ export default function Resume() {
                       />
                       <p className="hidden sm:block underline">Download</p>
                     </button>
-                  </a>
+                  </Link>
                 </div>
               </li>
             </ul>

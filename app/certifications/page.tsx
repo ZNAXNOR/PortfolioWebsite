@@ -1,4 +1,6 @@
 import { fetchCertifications } from "./generate-data";
+import Link from 'next/link';
+import Image from "next/image";
 
 type Certification = {
   badge_template: {
@@ -29,7 +31,7 @@ export default async function CertificationsPage() {
   const certifications: Certification[] = certificationsData?.data || [];
 
   return (
-    <div className="container mx-auto py-6">
+    (<div className="container mx-auto py-6">
       <h1 className="text-3xl font-bold mb-4">Certifications</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {certifications.map((cert, index) => {
@@ -40,18 +42,18 @@ export default async function CertificationsPage() {
             )?.entity.name || "Unknown Issuer";
 
           return (
-            <div key={index} className="border p-4 rounded shadow-md">
-              <a
+            (<div key={index} className="border p-4 rounded shadow-md">
+              <Link
                 href={badge_template.url}
                 target="_blank"
                 rel="noopener noreferrer"
-              >
-                <img
+                legacyBehavior>
+                <Image
                   src={badge_template.image_url}
                   alt={badge_template.name}
                   className="h-20 mx-auto mb-4"
                 />
-              </a>
+              </Link>
               <h2 className="text-xl font-semibold text-center">
                 {badge_template.name}
               </h2>
@@ -63,18 +65,18 @@ export default async function CertificationsPage() {
                 {cert.issued_at ? formatDate(cert.issued_at) : "Unknown Date"}
               </p>
               <p className="text-sm mt-3">{badge_template.description}</p>
-              <a
+              <Link
                 href={badge_template.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-500 hover:underline block text-center mt-4"
               >
                 View Certification
-              </a>
-            </div>
+              </Link>
+            </div>)
           );
         })}
       </div>
-    </div>
+    </div>)
   );
 }

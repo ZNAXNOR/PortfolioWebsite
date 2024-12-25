@@ -1,4 +1,5 @@
 import React from "react";
+import Link from 'next/link'
 
 export default function ThankYou() {
   return (
@@ -12,13 +13,13 @@ export default function ThankYou() {
             Your message has been successfully submitted. I will get back to you soon!
           </p>
           <div className="mt-10">
-            <a
+            <Link
               href="/"
               className="block w-full rounded-md bg-orange-600 px-3.5 py-2.5 text-center 
               text-sm font-semibold text-white shadow-sm hover:bg-orange-500 focus-visible:outline 
               focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600">
               Back to Home
-            </a>
+            </Link>
           </div>
         </div>
       </div>

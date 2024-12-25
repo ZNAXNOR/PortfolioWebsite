@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import {
   FaXTwitter,
   FaGithub,
@@ -32,9 +33,9 @@ type SocialLinkProps = {
 
 export function SocialLink({ href, icon: Icon }: SocialLinkProps) {
   return (
-    <a href={href} target="_blank" rel="noopener noreferrer">
+    <Link href={href} target="_blank" rel="noopener noreferrer">
       <Icon />
-    </a>
+    </Link>
   );
 }
 
@@ -65,13 +66,13 @@ export default function Footer() {
               <ul className="space-y-2">
                 {aboutMe.map((link) => (
                   <li key={link.name}>
-                    <a
+                    <Link
                       href={link.href}
                       className="text-gray-300 hover:underline underline-offset-4 decoration-red-600
                                 hover:text-white"
                     >
                       {link.name}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -83,13 +84,13 @@ export default function Footer() {
               <ul className="space-y-2">
                 {additional.map((link) => (
                   <li key={link.name}>
-                    <a
+                    <Link
                       href={link.href}
                       className="text-gray-300 hover:underline underline-offset-4 decoration-red-600
                                 hover:text-white"
                     >
                       {link.name}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -99,13 +100,13 @@ export default function Footer() {
               <ul className="space-y-2">
                 {legal.map((link) => (
                   <li key={link.name}>
-                    <a
+                    <Link
                       href={link.href}
                       className="text-gray-300 hover:underline underline-offset-4 decoration-red-600
                                 hover:text-white"
                     >
                       {link.name}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -116,7 +117,7 @@ export default function Footer() {
         <footer className="pt-12">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex space-x-3">
-              <a href="/" className="text-sm">
+              <Link href="/" className="text-sm">
                 <h1
                   className="text-2xl font-bold bg-clip-text text-transparent 
                 bg-gradient-to-r from-red-500 to-orange-500"
@@ -130,7 +131,7 @@ export default function Footer() {
                 >
                   Featuring my Portfolio and Skills
                 </div>
-              </a>
+              </Link>
             </div>
             <div className="mt-4 md:mt-0">
               <h6 className="font-semibold text-lg mb-4">Socials</h6>

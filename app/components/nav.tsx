@@ -12,6 +12,7 @@ import {
   DocumentTextIcon,
 } from "@heroicons/react/24/outline";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 const navigation = [
   { name: "Home", href: "/", current: true },
@@ -57,17 +58,17 @@ export function Navbar() {
               <div className="flex flex-1 items-center justify-center tablet:items-stretch tablet:justify-start">
                 {/* Title */}
                 <div className="flex shrink-0 items-center">
-                  <a href="/">
+                  <Link href="/">
                     <strong className="text-lg bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-orange-500">
                       Omkar Portfolio{" "}
                     </strong>
-                  </a>
+                  </Link>
                 </div>
                 {/* Navigation Menu */}
                 <div className="hidden tablet:ml-10 tablet:block">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
-                      <a
+                      <Link
                         key={item.name}
                         href={item.href}
                         className={classNames(
@@ -78,7 +79,7 @@ export function Navbar() {
                         )}
                       >
                         {item.name}
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 </div>
@@ -88,7 +89,7 @@ export function Navbar() {
                 className="absolute inset-y-0 right-0 flex items-center pr-2 tablet:static tablet:inset-auto 
                               space-x-4 tablet:ml-6 tablet:pr-0"
               >
-                <a href="/resume">
+                <Link href="/resume">
                   <span className="tablet:ml-3">
                     <button
                       type="button"
@@ -106,7 +107,7 @@ export function Navbar() {
                       <p className="hidden tablet:block">Resume</p>
                     </button>
                   </span>
-                </a>
+                </Link>
                 <ThemeSwitch />
               </div>
             </div>

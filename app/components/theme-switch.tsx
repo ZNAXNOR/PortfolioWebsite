@@ -1,5 +1,6 @@
 "use client";
 import * as React from "react";
+import Image from "next/image";
 import { useTheme } from "next-themes";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import type { ThemeProviderProps } from "next-themes/dist/types";
@@ -62,7 +63,7 @@ export const ThemeSwitch: React.FC = () => {
     mediaQuery.addEventListener("change", handleChange);
 
     return () => mediaQuery.removeEventListener("change", handleChange);
-  }, [setTheme]);
+  }, [setTheme, reflectPreference]);
 
   const toggleTheme = () => {
     const newTheme = currentTheme === "light" ? "dark" : "light";
@@ -87,13 +88,13 @@ export const ThemeSwitch: React.FC = () => {
       className="flex items-center justify-center transition-opacity duration-300 hover:opacity-90"
     >
       {currentTheme === "dark" ? (
-        <img
+        <Image
           src="../logo/dark-moon.svg"
           alt="Moon icon for dark mode"
           className="h-[20px] w-[20px]"
         />
       ) : (
-        <img
+        <Image
           src="../logo/light-sun.svg"
           alt="Sun icon for light mode"
           className="h-[20px] w-[20px]"

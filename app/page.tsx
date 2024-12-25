@@ -3,7 +3,7 @@ import { socialLinks } from "./config";
 
 export default function Page() {
   return (
-    <section className="container mx-auto relative flex flex-col lg:flex-row">
+    (<section className="container mx-auto relative flex flex-col lg:flex-row">
       <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
         {/* Left Column */}
         <div className="flex flex-col px-8 lg:px-16">
@@ -17,7 +17,10 @@ export default function Page() {
               width={160}
               height={160}
               priority
-            />
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} />
           </a>
           <a href="/resume">
             <button
@@ -78,6 +81,6 @@ export default function Page() {
           </div>
         </div>
       </div>
-    </section>
+    </section>)
   );
 }
