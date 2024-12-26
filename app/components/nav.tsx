@@ -93,17 +93,23 @@ export function Navbar() {
                   <span className="tablet:ml-3">
                     <button
                       type="button"
-                      className="inline-flex items-center rounded-md text-center
-                            bg-gradient-to-r from-red-600 to-orange-600 px-1 tablet:px-3 py-2 text-sm 
-                            font-semibold text-white shadow-sm hover:from-red-400 
-                            hover:via-orange-600 hover:to-red-600 focus-visible:outline 
-                            focus-visible:outline-2 focus-visible:outline-offset-2 
-                            focus-visible:outline-white"
+                      className={classNames(
+                        pathname === "/resume"
+                          ? "bg-gradient-to-r text-white shadow-sm from-red-400 via-orange-600 to-red-600 focus-visible:outline"
+                          : "bg-gray-200 dark:bg-gray-600",
+                            "px-1 tablet:px-3 py-2 text-sm font-semibold",
+                            "inline-flex items-center rounded-md text-center",                            
+                            "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                      )}
                     >
                       <DocumentTextIcon
                         aria-hidden="true"
-                        className="tablet:mr-1.5 size-5 shrink-0 text-white stroke-2"
-                      />
+                        className={classNames(
+                          pathname === "/resume"
+                            ? "text-white stroke-2 tablet:mr-1.5 size-5 shrink-0"
+                            : "tablet:mr-1.5 size-5 shrink-0"
+                        )}
+                      />                      
                       <p className="hidden tablet:block">Resume</p>
                     </button>
                   </span>
