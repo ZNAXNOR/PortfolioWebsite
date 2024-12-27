@@ -1,8 +1,5 @@
 import React from 'react';
 
-// This component serves as the Cookie Policy page for Omkar Dalvi's portfolio website.
-// It uses Tailwind CSS for styling and provides details about cookie usage in a clear and concise manner.
-
 const CookiePolicy: React.FC = () => {
   return (
     <div className="min-h-screen p-6">
