@@ -5,6 +5,7 @@ import { useTheme } from "next-themes";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import type { ThemeProviderProps } from "next-themes/dist/types";
 import { FaCircleHalfStroke } from "react-icons/fa6";
+import { useCallback } from "react";
 
 const storageKey = "theme-preference";
 
@@ -41,12 +42,12 @@ export const ThemeSwitch: React.FC = () => {
     return "light";
   };
 
-  const reflectPreference = (theme: "light" | "dark") => {
-    document.documentElement.classList.remove("bg-light", "bg-dark");
-    document.documentElement.classList.add(`bg-${theme}`);
+  const reflectPreference = useCallback((theme: "light" | "dark") => {
+    document.documentElement.classList.remove("bg-light", "bg-dark");  
+    document.documentElement.classList.add(`bg-${theme}`);  
     setCurrentTheme(theme);
     setTheme(theme);
-  };
+  }, [setCurrentTheme, setTheme]);
 
   React.useEffect(() => {
     setMounted(true);

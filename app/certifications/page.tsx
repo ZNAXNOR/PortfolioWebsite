@@ -1,5 +1,4 @@
 import { fetchCertifications } from "./generate-data";
-import Link from "next/link";
 import Image from "next/image";
 
 type Certification = {
@@ -35,7 +34,7 @@ export default async function CertificationsPage() {
     <div className="container mx-auto py-6">
       <h1 className="text-3xl font-bold mb-4">Credly Certification Badges</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {certifications.map((cert, index) => {
+        {certifications.map((cert) => {
           const { id } = cert;
           const { badge_template } = cert;
           const issuer =
@@ -44,7 +43,7 @@ export default async function CertificationsPage() {
             )?.entity.name || "Unknown Issuer";
 
           return (
-            <a target="_blank" rel="noopener noreferrer" href={`http://www.credly.com/badges/${id}`}
+            <a key={id} target="_blank" rel="noopener noreferrer" href={`http://www.credly.com/badges/${id}`}
               className="hover:drop-shadow-2xl focus:ring-gray-700 focus:ring-offset-4">
               <div className="max-w-sm h-96 flex flex-col justify-between bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 {/* Badge Image */}
