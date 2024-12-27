@@ -1,27 +1,20 @@
-"use client";
+import Link from 'next/link';
+import React from 'react';
+import { contactInfo } from '../config';
 
-import { useEffect } from "react";
-import Link from "next/link";
-
-export default function Error({
-  error,
-}: {
-  error: Error;
-  reset: () => void;
-}) {
-  useEffect(() => {
-    console.error(error);
-  }, [error]);
-
+const Feedback: React.FC = () => {
   return (
     <main className="grid min-h-full place-items-center px-6 py-24 sm:py-32 lg:px-8">
       <div className="text-center">
-        <p className="text-base font-semibold text-orange-600">Oops!</p>
+        <p className="text-base font-semibold text-orange-600">Yikes!</p>
         <h1 className="mt-4 text-balance text-5xl font-semibold tracking-tight sm:text-7xl">
-          Page not found
+          Page under construction.
         </h1>
         <p className="mt-6 text-pretty text-lg font-medium sm:text-xl/8">
-          Something went wrong. Maybe try refreshing?
+        Feedback page is unavailabe for now. This page will be added as soon as possible. 
+        </p>
+        <p className="mt-2 text-pretty text-lg font-medium sm:text-xl/8">
+            In the meantime, please use <a href="/contact" className="text-orange-600 hover:underline">Contact</a> page for any feedback
         </p>
         <div className="mt-10 flex items-center justify-center gap-x-6">
           <Link
@@ -31,7 +24,7 @@ export default function Error({
                     focus-visible:outline-orange-600"
           >
             Go back home
-          </Link>
+          </Link>          
           <Link href="/feedback" className="text-sm font-semibold hover:text-orange-600">
             Provide Feedback <span aria-hidden="true">&rarr;</span>
           </Link>
@@ -39,4 +32,6 @@ export default function Error({
       </div>
     </main>
   );
-}
+};
+
+export default Feedback;

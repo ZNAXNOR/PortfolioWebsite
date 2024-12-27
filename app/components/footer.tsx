@@ -11,9 +11,15 @@ import {
 import { socialLinks } from "../config";
 
 const aboutMe = [
-  { name: "Resume", href: "/resume", current: true },
+  { name: "Resume", href: "/resume", current: false },
   { name: "Projects", href: "/projects", current: false },
   { name: "Certificates", href: "/certificates", current: false },
+];
+
+const contact = [
+  { name: "Contact Me", href: "/contact", current: false },
+  { name: "Feedback", href: "/feedback", current: false },
+  { name: "Suggestion", href: "/suggestion", current: false }
 ];
 
 const additional = [
@@ -58,11 +64,10 @@ export default function Footer() {
     >
       <div className="flex-auto mx-auto p-10 max-w-[1080px] w-full">
         <footer>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 sm:grid-cols-4 gap-10">
+            {/* About Me */}
             <nav>
-              <h6 className="text-white font-semibold text-lg mb-4">
-                About Me
-              </h6>
+              <h6 className="text-white font-semibold text-lg mb-4">About Me</h6>
               <ul className="space-y-2">
                 {aboutMe.map((link) => (
                   <li key={link.name}>
@@ -77,10 +82,25 @@ export default function Footer() {
                 ))}
               </ul>
             </nav>
+            {/* Contact */}
             <nav>
-              <h6 className="text-white font-semibold text-lg mb-4">
-                Additional
-              </h6>
+              <h6 className="text-white font-semibold text-lg mb-4">Contact</h6>
+              <ul className="space-y-2">
+                {contact.map((link) => (
+                  <li key={link.name}>
+                    <Link
+                      href={link.href}
+                      className="text-gray-300 hover:underline underline-offset-4 decoration-red-600
+                                hover:text-white"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+            <nav>
+              <h6 className="text-white font-semibold text-lg mb-4">Additional</h6>
               <ul className="space-y-2">
                 {additional.map((link) => (
                   <li key={link.name}>
@@ -94,7 +114,7 @@ export default function Footer() {
                   </li>
                 ))}
               </ul>
-            </nav>
+            </nav>            
             <nav>
               <h6 className="text-white font-semibold text-lg mb-4">Legal</h6>
               <ul className="space-y-2">
