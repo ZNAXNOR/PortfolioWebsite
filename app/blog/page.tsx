@@ -21,7 +21,7 @@ const Blogs: React.FC = () => {
           >
             Go back home
           </Link>
-          <Link href="/feedback" className="text-sm font-semibold ">
+          <Link href="/feedback" className="text-sm font-semibold hover:text-orange-600">
             Provide Feedback <span aria-hidden="true">&rarr;</span>
           </Link>
         </div>

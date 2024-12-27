@@ -13,7 +13,7 @@ import { socialLinks } from "../config";
 const aboutMe = [
   { name: "Resume", href: "/resume", current: false },
   { name: "Projects", href: "/projects", current: false },
-  { name: "Certificates", href: "/certificates", current: false },
+  { name: "Certificates", href: "/certifications", current: false },
 ];
 
 const contact = [
