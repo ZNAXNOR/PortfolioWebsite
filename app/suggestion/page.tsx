@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import React from 'react';
-import { contactInfo } from '../config';
 
 const Suggestion: React.FC = () => {
   return (
