@@ -17,9 +17,10 @@ import Link from "next/link";
 const navigation = [
   { name: "Home", href: "/", current: true },
   { name: "Contact Me", href: "/contact", current: false },
-  { name: "Blog", href: "/blog", current: false },
-  { name: "Projects", href: "/projects", current: false },
-  { name: "Photos", href: "/photos", current: false },
+  { name: "Explore AI", href: "/ai", current: false },
+  // { name: "Blog", href: "/blog", current: false },
+  // { name: "Projects", href: "/projects", current: false },
+  // { name: "Photos", href: "/photos", current: false },
 ];
 
 function classNames(...classes: (string | undefined | null | false)[]) {

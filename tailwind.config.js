@@ -20,6 +20,9 @@ module.exports = {
           },
         },
       },
+      colors: {
+        'dark':'#212830',
+      },
       screens: {
         tablet: "850px",
       },

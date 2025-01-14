@@ -8,7 +8,7 @@ import { setupDevPlatform } from "@cloudflare/next-on-pages/next-dev";
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["images.credly.com"],
+    domains: ["images.credly.com", 'cdn.icon-icons.com', 'i.pravatar.cc', 'support.signal.org'],
   },
 };
 

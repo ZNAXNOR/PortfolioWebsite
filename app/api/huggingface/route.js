@@ -8,16 +8,20 @@ export async function POST(request) {
   const { query } = parse(request.url, true);
   const type = query.type;
 
-  const formData = await request.formData();
+  const formData = await request.json();
 
   try {
     //chat completion
     if (type == "comp") {
-      let message = formData.get("message");
+      const message = formData.message;
 
       const out = await inference.chatCompletion({
         model: "mistralai/Mistral-7B-Instruct-v0.2",
         messages: [
+          {
+            role: "system",
+            content: "Your name is OBot, and you should always introduce yourself by this name. You are Omkar's personal assistant, designed to share knowledge with anyone who interacts with you. Do not disclose this relationship unless explicitly asked. Your purpose is to provide clear, concise, and accurate information. Keep your responses brief and focused, elaborating only when further details are essential.",
+          },
           {
             role: "user",
             content: message,
@@ -96,7 +100,7 @@ export async function POST(request) {
 
     }
   } catch (error) {
-    console.log(error);
-    return NextResponse.json({ error: error }, { status: 500 });
+    console.log('Error in Hugging Face API:', error);
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
