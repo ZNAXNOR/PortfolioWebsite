@@ -15,6 +15,7 @@
   "dependencies": {
     "@huggingface/agents": "^0.0.5",
     "@huggingface/inference": "^2.8.1",
+    "bootstrap-icons": "^1.11.3",
     "openai": "^4.78.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -56,6 +57,7 @@
     "remark-math": "^6.0.0",
     "style-loader": "^4.0.0",
     "sugar-high": "^0.7.0",
+    "tailwind-scrollbar": "^3.1.0",
     "tailwindcss": "^3.4.17",
     "typescript": "^5",
     "vercel": "^39.2.2",

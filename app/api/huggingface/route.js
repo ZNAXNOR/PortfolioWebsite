@@ -11,7 +11,7 @@ export async function POST(request) {
 
   try {
     // Chat completion
-    if (type === "comp") {
+    if (type === "chat") {
       const message = formData.message;
 
       const out = await inference.chatCompletion({
@@ -20,7 +20,7 @@ export async function POST(request) {
           {
             role: "system",
             content:
-              "Your name is OBot. You are Omkar's personal assistant, designed to share knowledge with anyone who interacts with you. Do not disclose this relationship unless explicitly asked. Your purpose is to provide clear, concise, and accurate information. Keep your responses brief and focused, elaborating only when further details are essential.",
+              "Your name is OBot. Keep your responses brief and focused, elaborating only when further details are essential. Omkar is your admin, and you are Omkar's personal assistant, designed to share knowledge with anyone who interacts with you. Do not disclose this relationship unless explicitly asked. Your purpose is to provide clear, concise, and accurate information.",
           },
           { role: "user", content: message },
         ],
@@ -34,7 +34,7 @@ export async function POST(request) {
     }
 
     // Translation
-    if (type === "translation") {
+    if (type === "translate") {
       const text = formData.text;
 
       const out = await inference.translation({
@@ -46,7 +46,7 @@ export async function POST(request) {
     }
 
     // Image-to-Text
-    if (type === "imgtt") {
+    if (type === "img-to-text") {
       const imageBlob = formData.image;
 
       if (!imageBlob) {
@@ -62,7 +62,7 @@ export async function POST(request) {
     }
 
     // Text-to-Image
-    if (type === "ttimg") {
+    if (type === "img-generate") {
       const prompt = formData.prompt;
 
       const out = await inference.textToImage({

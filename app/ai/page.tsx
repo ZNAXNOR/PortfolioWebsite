@@ -12,9 +12,10 @@ const features = [
   {
     name: "Chatbot",
     description:
-      "Ask questions and get insightful answers with our AI-powered chatbot.",
+      "Ask questions and get insightful answers with this AI-powered chatbot.",
     icon: ChatBubbleLeftEllipsisIcon,
-    link: "/ai/chat", // Link to the Chatbot page: app/ai/chat.tsx
+    link: "/ai/chat", // Link to the Chatbot page
+    underConstruction: false, // Not under construction
   },
   {
     name: "Translate Sentences",
@@ -22,6 +23,7 @@ const features = [
       "Translate your sentences effortlessly (currently supporting German).",
     icon: LanguageIcon,
     link: "/ai/translate", // Link to the Translate Sentences page
+    underConstruction: true, // Under construction
   },
   {
     name: "Image Identification",
@@ -29,12 +31,14 @@ const features = [
       "Upload an image and let the AI identify its contents with ease.",
     icon: PhotoIcon,
     link: "/ai/identify", // Link to the Image Identification page
+    underConstruction: true, // Under construction
   },
   {
     name: "Image Generation",
     description: "Generate stunning images from text descriptions.",
     icon: PaintBrushIcon,
     link: "/ai/generate", // Link to the Image Generation page
+    underConstruction: true, // Under construction
   },
 ];
 
@@ -54,11 +58,11 @@ export default function HomePage() {
                 </span>
               </h2>
               <p className="mt-2 text-4xl font-semibold tracking-tight text-gray-900 dark:text-gray-100 sm:text-5xl">
-                AI-Powered Tools for Your Portfolio
+                AI-Powered Tools
               </p>
               <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-400">
                 Dive into the power of artificial intelligence. From chatting
-                and translating to image identification and generation, our AI
+                and translating to image identification and generation, my AI
                 showcases versatility and innovation.
               </p>
             </div>
@@ -67,19 +71,44 @@ export default function HomePage() {
             {features.map((feature) => (
               <div
                 key={feature.name}
-                className="group relative flex cursor-pointer flex-col items-start rounded-lg bg-gray-50 p-6 shadow-sm hover:bg-purple-100 dark:bg-gray-800 dark:hover:bg-purple-800 transition"
-                onClick={() => router.push(feature.link)}
+                className={`group relative flex cursor-pointer flex-col items-start rounded-lg p-6 shadow-sm transition ${
+                  feature.underConstruction
+                    ? "bg-gray-50 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-600"
+                    : "bg-gray-50 hover:bg-purple-100 dark:bg-gray-800 dark:hover:bg-purple-800"
+                }`}
+                onClick={() => !feature.underConstruction && router.push(feature.link)}
               >
                 <feature.icon
                   aria-hidden="true"
-                  className="h-8 w-8 text-indigo-600 dark:text-indigo-400 group-hover:text-purple-600 dark:group-hover:text-purple-300"
+                  className={`h-8 w-8 ${
+                    feature.underConstruction
+                      ? "text-gray-500 group-hover:text-gray-700 dark:text-gray-400 dark:group-hover:text-gray-300"
+                      : "text-indigo-600 group-hover:text-purple-600 dark:text-indigo-400 dark:group-hover:text-purple-300"
+                  }`}
                 />
-                <h3 className="mt-4 text-lg font-medium leading-6 text-gray-900 dark:text-gray-100 group-hover:text-purple-700 dark:group-hover:text-purple-300">
+                <h3
+                  className={`mt-4 text-lg font-medium leading-6 ${
+                    feature.underConstruction
+                      ? "text-gray-700 group-hover:text-gray-900 dark:text-gray-300 dark:group-hover:text-gray-100"
+                      : "text-gray-900 group-hover:text-purple-700 dark:text-gray-100 dark:group-hover:text-purple-300"
+                  }`}
+                >
                   {feature.name}
                 </h3>
-                <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 group-hover:text-purple-600 dark:group-hover:text-purple-200">
+                <p
+                  className={`mt-2 text-sm ${
+                    feature.underConstruction
+                      ? "text-gray-600 group-hover:text-gray-800 dark:text-gray-400 dark:group-hover:text-gray-200"
+                      : "text-gray-600 group-hover:text-purple-600 dark:text-gray-400 dark:group-hover:text-purple-200"
+                  }`}
+                >
                   {feature.description}
                 </p>
+                {feature.underConstruction && (
+                  <span className="absolute top-4 right-4 rounded-md bg-red-100 px-2 py-1 text-xs font-medium text-red-800 ring-1 ring-inset ring-red-600/20">
+                    Under Construction
+                  </span>
+                )}
               </div>
             ))}
           </div>
