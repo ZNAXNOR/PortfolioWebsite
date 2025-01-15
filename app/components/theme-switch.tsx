@@ -1,60 +1,41 @@
 "use client";
 import * as React from "react";
 import Image from "next/image";
-import { useTheme } from "next-themes";
-import { ThemeProvider as NextThemesProvider } from "next-themes";
-import type { ThemeProviderProps } from "next-themes/dist/types";
-import { FaCircleHalfStroke } from "react-icons/fa6";
-import { useCallback } from "react";
+import { useCallback, useEffect, useState, ReactNode } from "react";
 
 const storageKey = "theme-preference";
 
-export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
-  return (
-    <NextThemesProvider
-      attribute="class"
-      defaultTheme="system"
-      enableSystem
-      {...props}
-    >
-      {children}
-    </NextThemesProvider>
-  );
+interface ThemeProviderProps {
+  children: ReactNode;
+  showIcon?: boolean; // Added showIcon prop
 }
 
-export const ThemeSwitch: React.FC = () => {
-  const { setTheme } = useTheme();
-  const [mounted, setMounted] = React.useState(false);
-  const [currentTheme, setCurrentTheme] = React.useState<"light" | "dark">(
-    "light"
-  );
+export const ThemeSwitch: React.FC<ThemeProviderProps> = ({ children, showIcon = true }) => {
+  const [mounted, setMounted] = useState(false);
+  const [currentTheme, setCurrentTheme] = useState<"light" | "dark">("light");
 
-  const getColorPreference = (): "light" | "dark" => {
-    if (typeof window !== "undefined") {
-      const storedPreference = localStorage.getItem(storageKey);
-      if (storedPreference) {
-        return storedPreference as "light" | "dark";
-      }
-      return window.matchMedia("(prefers-color-scheme: dark)").matches
+  const reflectPreference = useCallback((newTheme: "light" | "dark") => {
+    setCurrentTheme(newTheme);
+    if (newTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, []);
+
+  useEffect(() => {
+    setMounted(true);
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const storedTheme = localStorage.getItem(storageKey);
+    const userPrefersDark = mediaQuery.matches;
+
+    const initialTheme =
+      storedTheme === "dark" || (!storedTheme && userPrefersDark)
         ? "dark"
         : "light";
-    }
-    return "light";
-  };
 
-  const reflectPreference = useCallback((theme: "light" | "dark") => {
-    document.documentElement.classList.remove("bg-light", "bg-dark");  
-    document.documentElement.classList.add(`bg-${theme}`);  
-    setCurrentTheme(theme);
-    setTheme(theme);
-  }, [setCurrentTheme, setTheme]);
+    reflectPreference(initialTheme);
 
-  React.useEffect(() => {
-    setMounted(true);
-    const initTheme = getColorPreference();
-    reflectPreference(initTheme);
-
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
     const handleChange = () => {
       const newTheme = mediaQuery.matches ? "dark" : "light";
       localStorage.setItem(storageKey, newTheme);
@@ -64,7 +45,7 @@ export const ThemeSwitch: React.FC = () => {
     mediaQuery.addEventListener("change", handleChange);
 
     return () => mediaQuery.removeEventListener("change", handleChange);
-  }, [setTheme, reflectPreference]);
+  }, [reflectPreference]);
 
   const toggleTheme = () => {
     const newTheme = currentTheme === "light" ? "dark" : "light";
@@ -74,35 +55,38 @@ export const ThemeSwitch: React.FC = () => {
 
   if (!mounted) {
     return (
-      <FaCircleHalfStroke
-        className="h-[14px] w-[14px] text-[#1c1c1c]"
-        aria-hidden="true"
-      />
+      <>
+        {children}
+        {showIcon && (
+          <Image
+            src={currentTheme === "dark" ? "../logo/dark-moon.svg" : "../logo/light-sun.svg"}
+            alt={currentTheme === "dark" ? "Moon icon for dark mode" : "Sun icon for light mode"}
+            height={20}
+            width={20}
+          />
+        )}
+      </>
     );
   }
 
   return (
-    <button
-      id="theme-toggle"
-      aria-label={`${currentTheme} mode`}
-      onClick={toggleTheme}
-      className="flex items-center justify-center transition-opacity duration-300 hover:opacity-90"
-    >
-      {currentTheme === "dark" ? (
-        <Image
-          src="../logo/dark-moon.svg"
-          alt="Moon icon for dark mode"
-          height={20}
-          width={20}
-        />
-      ) : (
-        <Image
-          src="../logo/light-sun.svg"
-          alt="Sun icon for light mode"
-          height={20}
-          width={20}
-        />
+    <>
+      {children}
+      {showIcon && (
+        <button
+          id="theme-toggle"
+          aria-label={`${currentTheme} mode`}
+          onClick={toggleTheme}
+          className="flex items-center justify-center transition-opacity duration-300 hover:opacity-90"
+        >
+          <Image
+            src={currentTheme === "dark" ? "../logo/dark-moon.svg" : "../logo/light-sun.svg"}
+            alt={currentTheme === "dark" ? "Moon icon for dark mode" : "Sun icon for light mode"}
+            height={20}
+            width={20}
+          />
+        </button>
       )}
-    </button>
+    </>
   );
 };

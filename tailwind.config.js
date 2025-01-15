@@ -21,7 +21,8 @@ module.exports = {
         },
       },
       colors: {
-        'dark':'#212830',
+        'dark':'#171717',
+        'light':'#FAFAFA',
       },
       screens: {
         tablet: "850px",

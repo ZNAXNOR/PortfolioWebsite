@@ -66,7 +66,7 @@ const Chat = () => {
     }, [messages, botTyping]); // Dependency array includes both `messages` and `botTyping`
 
     return (
-        <div className="flex flex-col h-screen p-6 -pt-48">
+        <div className="flex flex-col h-screen p-6 -pt-48 bg-light dark:bg-dark transition-colors duration-300 ease-in-out">
             {/* Banner Section */}
             <div className="inline-block bg-gradient-to-r from-indigo-700 via-purple-700 to-indigo-600 text-white py-4 rounded-lg sm:rounded-full px-10 mb-4 shadow-lg">
                 <h1 className="text-xl font-semibold flex items-center space-x-3">
@@ -128,7 +128,7 @@ const Chat = () => {
             </div>
 
             {/* Input Section */}
-            <div className="sticky bottom-0 px-4 pb-2 flex flex-col items-center bg-white dark:bg-dark">
+            <div className="sticky bottom-0 px-4 pb-2 flex flex-col items-center">
                 <div className="relative w-full max-w-screen-sm lg:max-w-screen-lg">
                     {/* Input Field */}
                     <input
