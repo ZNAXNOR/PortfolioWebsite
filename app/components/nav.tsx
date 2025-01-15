@@ -29,21 +29,21 @@ function classNames(...classes: (string | undefined | null | false)[]) {
 
 export function Navbar() {
   const pathname = usePathname();
+
   return (
-    <div className=" flex-auto mx-auto mt-2 md:mt-6 flex flex-col px-6 sm:px-4 md:px-0 max-w-[1080px] w-full">
+    <div className="flex-auto mx-auto flex flex-col px-6 sm:px-4 md:px-0 max-w-[1080px] w-full">
       <Disclosure as="nav">
         <div className="pb-20 sm:px-10">
           <div className="mx-auto space-x-4 my-auto max-w-7xl sm:px-2">
             <div className="relative flex h-16 items-center justify-between">
+              {/* Mobile Menu Button */}
               <div className="absolute inset-y-0 left-0 flex items-center tablet:hidden">
-                {/* Mobile menu button*/}
                 <DisclosureButton
                   className="group relative inline-flex items-center justify-center 
-                                  rounded-md p-2 text-gray-700 hover:bg-gray-100 dark:text-gray-400 
-                                  dark:hover:bg-gray-700 hover:text-black dark:hover:text-white 
-                                  focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                  rounded-md p-2 text-gray-700 hover:bg-gray-100 dark:text-gray-400 
+                  dark:hover:bg-gray-700 hover:text-black dark:hover:text-white 
+                  focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
                 >
-                  <span className="absolute -inset-0.5" />
                   <span className="sr-only">Open main menu</span>
                   <Bars3Icon
                     aria-hidden="true"
@@ -56,16 +56,17 @@ export function Navbar() {
                 </DisclosureButton>
               </div>
 
+              {/* Logo and Title */}
               <div className="flex flex-1 items-center justify-center tablet:items-stretch tablet:justify-start">
-                {/* Title */}
                 <div className="flex shrink-0 items-center">
                   <Link href="/">
                     <strong className="text-lg bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-orange-500">
-                      Omkar Portfolio{" "}
+                      Omkar Portfolio
                     </strong>
                   </Link>
                 </div>
-                {/* Navigation Menu */}
+
+                {/* Navigation Links */}
                 <div className="hidden tablet:ml-10 tablet:block">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
@@ -86,40 +87,39 @@ export function Navbar() {
                 </div>
               </div>
 
-              <div
-                className="absolute inset-y-0 right-0 flex items-center pr-2 tablet:static tablet:inset-auto 
-                              space-x-4 tablet:ml-6 tablet:pr-0"
-              >
+              {/* Right-Side Actions */}
+              <div className="absolute inset-y-0 right-0 flex items-center pr-2 tablet:static tablet:inset-auto 
+              space-x-4 tablet:ml-6 tablet:pr-0">
                 <Link href="/resume">
                   <span className="tablet:ml-3">
-                    <button
-                      type="button"
+                  <button
+                    type="button"
+                    className={classNames(
+                      "group px-1 tablet:px-3 py-2 text-sm font-semibold inline-flex items-center rounded-md text-center",
+                      pathname === "/resume"
+                        ? "bg-gradient-to-r from-red-400 via-orange-600 to-red-600 text-white shadow-sm"
+                        : "bg-gray-200 text-gray-700 dark:bg-gray-600 dark:text-gray-300",
+                      "hover:bg-gradient-to-r hover:from-red-500 hover:via-orange-700 hover:to-red-700 hover:text-white",
+                      "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                    )}
+                  >
+                    <DocumentTextIcon
+                      aria-hidden="true"
                       className={classNames(
-                        pathname === "/resume"
-                          ? "bg-gradient-to-r text-white shadow-sm from-red-400 via-orange-600 to-red-600 focus-visible:outline"
-                          : "bg-gray-200 dark:bg-gray-600",
-                            "px-1 tablet:px-3 py-2 text-sm font-semibold",
-                            "inline-flex items-center rounded-md text-center",                            
-                            "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                        "tablet:mr-1.5 size-5 shrink-0 text-gray-700 dark:text-white group-hover:text-white", // Use group-hover:text-white here
+                        pathname === "/resume" ? "text-white" : "dark:text-gray-100"
                       )}
-                    >
-                      <DocumentTextIcon
-                        aria-hidden="true"
-                        className={classNames(
-                          pathname === "/resume"
-                            ? "text-white stroke-2 tablet:mr-1.5 size-5 shrink-0"
-                            : "tablet:mr-1.5 size-5 shrink-0"
-                        )}
-                      />                      
-                      <p className="hidden tablet:block">Resume</p>
-                    </button>
+                    />
+                    <p className="hidden tablet:block">Resume</p>
+                  </button>
                   </span>
                 </Link>
-                <ThemeSwitch />
+                <ThemeSwitch showIcon={true} children={undefined} />
               </div>
             </div>
           </div>
 
+          {/* Mobile Menu */}
           <DisclosurePanel className="md:hidden">
             <div className="space-y-1 px-2 pb-3 pt-2">
               {navigation.map((item) => (

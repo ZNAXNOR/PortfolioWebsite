@@ -6,7 +6,7 @@ import { Navbar } from "./components/nav";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Footer from "./components/footer";
-import { ThemeProvider } from "./components/theme-switch";
+import { ThemeSwitch } from "./components/theme-switch";
 import { metaData } from "./config";
 
 export const metadata: Metadata = {
@@ -48,28 +48,22 @@ export const metadata: Metadata = {
 const cx = (...classes: (string | undefined | null | false)[]) =>
   classes.filter(Boolean).join(" ");
 
+// Define the RootLayout component
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en" className={cx(GeistSans.variable, GeistMono.variable)}>
-      <body className="antialiased flex flex-col items-center justify-center mx-auto mt-2 mb-4">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Navbar />
-          <main className="flex-auto mx-auto mt-2 md:mt-6 flex flex-col px-6 sm:px-4 md:px-0 max-w-[1080px] w-full">
-            {children}
-          </main>
-          <Footer />
-          <Analytics />
-          <SpeedInsights />
-        </ThemeProvider>
+    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
+      <body className="bg-neutral-50 text-neutral-900 dark:bg-neutral-900 dark:text-neutral-50 transition-colors duration-300">
+        <ThemeSwitch showIcon={false}> {/* Wrap the entire content with ThemeProvider */}
+            <Navbar />
+            <main className="w-full">{children}</main>
+            <Footer />
+            <Analytics /> {/* Vercel Analytics */}
+            <SpeedInsights /> {/* Vercel Speed Insights */}
+        </ThemeSwitch>
       </body>
     </html>
   );
