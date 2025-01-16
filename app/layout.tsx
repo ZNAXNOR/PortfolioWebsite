@@ -59,7 +59,7 @@ export default function RootLayout({
       <body className="bg-neutral-50 text-neutral-900 dark:bg-neutral-900 dark:text-neutral-50 transition-colors duration-300">
         <ThemeSwitch showIcon={false}> {/* Wrap the entire content with ThemeProvider */}
             <Navbar />
-            <main className="w-full">{children}</main>
+            <main className="w-full px-6 sm:px-4 md:px-0 max-w-[1080px] mx-auto">{children}</main>
             <Footer />
             <Analytics /> {/* Vercel Analytics */}
             <SpeedInsights /> {/* Vercel Speed Insights */}
