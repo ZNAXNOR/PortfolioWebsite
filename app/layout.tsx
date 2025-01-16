@@ -45,9 +45,6 @@ export const metadata: Metadata = {
   },
 };
 
-const cx = (...classes: (string | undefined | null | false)[]) =>
-  classes.filter(Boolean).join(" ");
-
 // Define the RootLayout component
 export default function RootLayout({
   children,
