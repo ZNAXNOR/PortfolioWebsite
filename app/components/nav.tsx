@@ -114,7 +114,9 @@ export function Navbar() {
                   </button>
                   </span>
                 </Link>
-                <ThemeSwitch showIcon={true} children={undefined} />
+                <ThemeSwitch showIcon={true}>
+                  {/* Children can be placed here if needed */}
+                </ThemeSwitch>
               </div>
             </div>
           </div>

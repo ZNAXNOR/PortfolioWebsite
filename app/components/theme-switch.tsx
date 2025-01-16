@@ -1,16 +1,16 @@
 "use client";
 import * as React from "react";
 import Image from "next/image";
-import { useCallback, useEffect, useState, ReactNode } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const storageKey = "theme-preference";
 
-interface ThemeProviderProps {
-  children: ReactNode;
+interface ThemeSwitchProps {
   showIcon?: boolean; // Added showIcon prop
+  children?: React.ReactNode; // Added children prop
 }
 
-export const ThemeSwitch: React.FC<ThemeProviderProps> = ({ children, showIcon = true }) => {
+export const ThemeSwitch: React.FC<ThemeSwitchProps> = ({ showIcon = true, children }) => {
   const [mounted, setMounted] = useState(false);
   const [currentTheme, setCurrentTheme] = useState<"light" | "dark">("light");
 
@@ -56,7 +56,6 @@ export const ThemeSwitch: React.FC<ThemeProviderProps> = ({ children, showIcon =
   if (!mounted) {
     return (
       <>
-        {children}
         {showIcon && (
           <Image
             src={currentTheme === "dark" ? "../logo/dark-moon.svg" : "../logo/light-sun.svg"}
@@ -65,13 +64,13 @@ export const ThemeSwitch: React.FC<ThemeProviderProps> = ({ children, showIcon =
             width={20}
           />
         )}
+        {children}
       </>
     );
   }
 
   return (
     <>
-      {children}
       {showIcon && (
         <button
           id="theme-toggle"
@@ -87,6 +86,7 @@ export const ThemeSwitch: React.FC<ThemeProviderProps> = ({ children, showIcon =
           />
         </button>
       )}
+      {children}
     </>
   );
 };
