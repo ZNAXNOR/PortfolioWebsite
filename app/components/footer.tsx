@@ -58,9 +58,9 @@ function SocialLinks() {
 
 export default function Footer() {
   return (
-    <div
+    <footer
       className="size-full mt-20 border-t-4 bg-gray-950 border-gray-100 dark:border-gray-700
-     -mb-96 text-centre md:text-left"
+     text-centre md:text-left"
     >
       <div className="flex-auto mx-auto p-10 max-w-[1080px] w-full">
         <footer>
@@ -133,7 +133,7 @@ export default function Footer() {
             </nav>
           </div>
         </footer>
-
+        
         <footer className="pt-12">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex space-x-3">
@@ -154,7 +154,7 @@ export default function Footer() {
               </Link>
             </div>
             <div className="mt-4 md:mt-0">
-              <h6 className="font-semibold text-lg mb-4">Socials</h6>
+              <h6 className="font-semibold text-lg mb-4 text-white">Socials</h6>
               <div className="flex space-x-4 text-gray-300">
                 <SocialLinks />
               </div>
@@ -162,6 +162,6 @@ export default function Footer() {
           </div>
         </footer>
       </div>
-    </div>
+    </footer>
   );
 }

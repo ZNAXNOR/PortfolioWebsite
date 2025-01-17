@@ -14,7 +14,7 @@ export const metaData = {
   
 export const contactInfo = {
     address: "Navi Mumbai, Maharashtra, India",
-    addressMap: "https://mapsapp.goo.gl/ZWY7Pe9v3SqeHUG89",
+    addressMap: "https://maps.app.goo.gl/uypRvtMBaw3yjE7z9",
     phone: "+91 913-639-9987"
 };
   

@@ -1,16 +1,12 @@
 "use client";
 
 import React, { useState } from "react";
-import { socialLinks, contactInfo } from "../config";
-import {
-  FaXTwitter,
-  FaGithub,
-  FaInstagram,
-  FaLinkedinIn,
-} from "react-icons/fa6";
+import { contactInfo } from "../config";
+import SocialAvatar from "../components/social-avatar";
 import Link from "next/link";
+import FAQSection from "./FAQ/page";
 
-export default function Contact() {
+const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     company: "",
@@ -20,9 +16,7 @@ export default function Contact() {
 
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
@@ -30,17 +24,14 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch(
-        "https://formsubmit.co/omkarsdalvi1@gmail.com",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-        }
-      );
+      const response = await fetch("https://formsubmit.co/omkarsdalvi1@gmail.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
       if (response.ok) {
-        setIsSubmitted(true); // Show the thank-you message
+        setIsSubmitted(true);
       } else {
         console.error("Form submission failed.");
       }
@@ -49,37 +40,16 @@ export default function Contact() {
     }
   };
 
-  type SocialLinkProps = {
-    href: string;
-    icon: React.ComponentType;
-  };
-
-  function SocialLink({ href, icon: Icon }: SocialLinkProps) {
-    return (
-      <Link href={href} target="_blank" rel="noopener noreferrer">
-        <Icon />
-      </Link>
-    );
-  }
-
-  function SocialLinks() {
-    return (
-      <div className="flex text-2xl gap-6 transition-opacity duration-300 hover:opacity-90 pt-10">
-        <SocialLink href={socialLinks.twitter} icon={FaXTwitter} />
-        <SocialLink href={socialLinks.github} icon={FaGithub} />
-        <SocialLink href={socialLinks.instagram} icon={FaInstagram} />
-        <SocialLink href={socialLinks.linkedin} icon={FaLinkedinIn} />
-      </div>
-    );
-  }
 
   return (
     <section>
-      <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
-        {/* Left Column - Contact Info */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 max-w-7xl mx-auto min-h-screen">
+        {/* Left Column */}
         <div className="flex flex-col justify-center px-8 py-12 lg:px-16">
-          <h2 className="text-4xl font-semibold">Get in touch</h2>
-          <p className="mt-4">
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100">
+            Get in touch
+          </h2>
+          <p className="mt-4 text-gray-700 dark:text-gray-300">
             Reach out to me through the following contact information.
           </p>
           <div className="mt-8 space-y-6">
@@ -87,117 +57,137 @@ export default function Contact() {
             <div className="flex items-center space-x-4">
               <span>📍</span>
               <Link href={contactInfo.addressMap}>
-                <p>{contactInfo.address}</p>
+                <p className="text-gray-700 dark:text-gray-300">{contactInfo.address}</p>
               </Link>
             </div>
-            {/* Contact */}
+            {/* Phone */}
             <div className="flex items-center space-x-4">
               <span>📞</span>
-              <p>{contactInfo.phone}</p>
+              <p className="text-gray-700 dark:text-gray-300">{contactInfo.phone}</p>
             </div>
-            {/* Socials */}
-            <SocialLinks />
+            {/* Social Links */}
+            <SocialAvatar />
           </div>
         </div>
 
-        {/* Right Column - Form */}
-        <div className="flex flex-col justify-center px-8 py-12 lg:px-16 bg-gray-200 dark:bg-gray-700 rounded-md">
-          {isSubmitted ? (
-            // Thank You Message
-            <div className="text-center">
-              <h3 className="text-3xl font-semibold text-orange-600">
-                Thank You!
-              </h3>
-              <p className="mt-4">
-                Your message has been successfully submitted. I will get back to
-                you soon.
-              </p>
-            </div>
-          ) : (
-            // Contact Form
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <h2 className="text-3xl font-semibold">Contact Me</h2>
-              {/* Name */}
-              <div className="sm:col-span-2">
-                <label htmlFor="name" className="block text-sm font-semibold">
-                  Name <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
+        {/* Right Column */}
+        <div className="flex items-center justify-center">
+          <div className="w-full max-w-lg rounded-md bg-white dark:bg-gray-800 p-8 shadow-lg">
+            {isSubmitted ? (
+              <div className="text-center">
+                <h3 className="text-3xl font-semibold text-orange-600">Thank You!</h3>
+                <p className="mt-4 text-gray-700 dark:text-gray-300">
+                  Your message has been successfully submitted. I will get back to you soon.
+                </p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <h2 className="text-3xl font-semibold text-gray-900 dark:text-gray-100">Contact Me</h2>
+                <InputField
+                  label="Name"
                   name="name"
-                  id="name"
+                  type="text"
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="mt-2.5 w-full rounded-md bg-white text-black px-3.5 py-2 text-base 
-                  outline outline-1 outline-gray-300 focus:outline-orange-600"
                 />
-              </div>
-              {/* Company */}
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="company"
-                  className="block text-sm font-semibold"
-                >
-                  Company (Optional)
-                </label>
-                <input
-                  type="text"
+                <InputField
+                  label="Company (Optional)"
                   name="company"
-                  id="company"
+                  type="text"
                   value={formData.company}
                   onChange={handleChange}
-                  className="mt-2.5 w-full rounded-md bg-white text-black px-3.5 py-2 text-base 
-                  outline outline-1 outline-gray-300 focus:outline-orange-600"
                 />
-              </div>
-              {/* Email */}
-              <div className="sm:col-span-2">
-                <label htmlFor="email" className="block text-sm font-semibold">
-                  Email <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="email"
+                <InputField
+                  label="Email"
                   name="email"
-                  id="email"
+                  type="email"
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="mt-2.5 w-full rounded-md bg-white text-black px-3.5 py-2 text-base 
-                  outline outline-1 outline-gray-300 focus:outline-orange-600"
                 />
-              </div>
-              {/* Message */}
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-semibold"
-                >
-                  Message <span className="text-red-500">*</span>
-                </label>
-                <textarea
+                <TextAreaField
+                  label="Message"
                   name="message"
-                  id="message"
-                  rows={4}
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  className="mt-2.5 w-full rounded-md bg-white text-black px-3.5 py-2 text-base 
-                  outline outline-1 outline-gray-300 focus:outline-orange-600"
-                ></textarea>
-              </div>
-              {/* Button */}
-              <button
-                type="submit"
-                className="mt-10 w-full rounded-md bg-orange-600 px-3.5 py-2.5 
-                      text-center text-sm font-semibold text-white hover:bg-orange-500"
-              >
-                Let's talk
-              </button>
-            </form>
-          )}
+                />
+                <button
+                  type="submit"
+                  className="w-full rounded-md bg-orange-600 px-4 py-2 text-white font-medium hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-400"
+                >
+                  Let's talk
+                </button>
+              </form>
+            )}
+          </div>
         </div>
       </div>
+      <FAQSection />
     </section>
   );
-}
+};
+
+const InputField = ({
+  label,
+  name,
+  type,
+  value,
+  onChange,
+  required = false,
+}: {
+  label: string;
+  name: string;
+  type: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  required?: boolean;
+}) => (
+  <div>
+    <label htmlFor={name} className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+      {label} {required && <span className="text-red-500">*</span>}
+    </label>
+    <input
+      type={type}
+      name={name}
+      id={name}
+      value={value}
+      onChange={onChange}
+      required={required}
+      className="mt-2 block w-full rounded-md bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
+    />
+  </div>
+);
+
+const TextAreaField = ({
+  label,
+  name,
+  value,
+  onChange,
+  required = false,
+}: {
+  label: string;
+  name: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  required?: boolean;
+}) => (
+  <div>
+    <label htmlFor={name} className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+      {label} {required && <span className="text-red-500">*</span>}
+    </label>
+    <textarea
+      name={name}
+      id={name}
+      rows={4}
+      value={value}
+      onChange={onChange}
+      required={required}
+      className="mt-2 block w-full rounded-md bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
+    ></textarea>
+  </div>
+);
+
+
+export default Contact;
