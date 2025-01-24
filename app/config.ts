@@ -23,5 +23,5 @@ export const socialLinks = {
     github: "https://github.com/ZNAXNOR",
     instagram: "https://www.instagram.com/znaxnor/",
     linkedin: "https://www.linkedin.com/in/omkar-dalvi2004/",
-    resume: "https://drive.google.com/file/d/1F5QjBJcLfejqjMlDDNWAMQsxHe4LkMV1/view?usp=drive_link"
+    resume: "https://drive.google.com/file/d/1xEs9oonAd5pwjCNKizyYZALA_AChdOgT/view?usp=sharing"
 };
